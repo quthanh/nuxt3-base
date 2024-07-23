@@ -1,0 +1,106 @@
+image: node:18
+
+pipelines:
+  branches:
+    production:
+      - step:
+          name: Install dependency & Build Production
+          caches:
+            - node
+          script:
+            - yarn
+            - yarn production
+          artifacts:
+            - .output/**
+            - restart.sh
+            - ecosystem.config.js
+      - step:
+          name: Sync
+          deployment: production
+          script:
+            - pipe: atlassian/rsync-deploy:0.11.0
+              variables:
+                USER: $FTP_USER
+                SERVER: $FTP_SERVER
+                REMOTE_PATH: $FTP_PATH
+                SSH_PORT: $FTP_PORT
+                LOCAL_PATH: '.output/**'
+                DEBUG: 'true'
+                EXTRA_ARGS:
+                  - '--exclude=.git/'
+            - pipe: atlassian/rsync-deploy:0.11.0
+              variables:
+                USER: $FTP_USER
+                SERVER: $FTP_SERVER
+                REMOTE_PATH: $FTP_PATH
+                SSH_PORT: $FTP_PORT
+                LOCAL_PATH: 'ecosystem.config.js'
+                DEBUG: 'true'
+            - pipe: atlassian/rsync-deploy:0.11.0
+              variables:
+                USER: $FTP_USER
+                SERVER: $FTP_SERVER
+                REMOTE_PATH: $FTP_PATH
+                SSH_PORT: $FTP_PORT
+                LOCAL_PATH: 'restart.sh'
+                DEBUG: 'true'
+            - pipe: atlassian/ssh-run:0.8.0
+              variables:
+                SSH_USER: $FTP_USER
+                SERVER: $FTP_SERVER
+                PORT: $FTP_PORT
+                DEBUG: 'true'
+                MODE: 'script'
+                COMMAND: 'restart.sh'
+
+    master:
+      - step:
+          name: Install dependency & Build Staging
+          caches:
+            - node
+          script:
+            - yarn
+            - yarn staging
+          artifacts:
+            - .output/**
+            - restart.sh
+            - ecosystem.config.js
+      - step:
+          name: Sync
+          deployment: staging
+          script:
+            - sed -i "s/{{NUXT_PUBLIC_STRIPE_KEY}}/$NUXT_PUBLIC_STRIPE_KEY/g" .env.staging
+            - pipe: atlassian/rsync-deploy:0.11.0
+              variables:
+                USER: $FTP_USER
+                SERVER: $FTP_SERVER
+                REMOTE_PATH: $FTP_PATH
+                SSH_PORT: $FTP_PORT
+                LOCAL_PATH: '.output/**'
+                DEBUG: 'true'
+                EXTRA_ARGS:
+                  - '--exclude=.git/'
+            - pipe: atlassian/rsync-deploy:0.11.0
+              variables:
+                USER: $FTP_USER
+                SERVER: $FTP_SERVER
+                REMOTE_PATH: $FTP_PATH
+                SSH_PORT: $FTP_PORT
+                LOCAL_PATH: 'ecosystem.config.js'
+                DEBUG: 'true'
+            - pipe: atlassian/rsync-deploy:0.11.0
+              variables:
+                USER: $FTP_USER
+                SERVER: $FTP_SERVER
+                REMOTE_PATH: $FTP_PATH
+                SSH_PORT: $FTP_PORT
+                LOCAL_PATH: 'restart.sh'
+                DEBUG: 'true'
+            - pipe: atlassian/ssh-run:0.8.0
+              variables:
+                SSH_USER: $FTP_USER
+                SERVER: $FTP_SERVER
+                PORT: $FTP_PORT
+                DEBUG: 'true'
+                MODE: 'script'
+                COMMAND: 'restart.sh'
