@@ -22,6 +22,7 @@ import '@vuepic/vue-datepicker/dist/main.css';
   --dp-scroll-bar-color: #6b7280;
   --dp-success-color: #7c3aed;
   --dp-success-color-disabled: #7c3aed;
+  --dp-primary-disabled-color: #A78BFA; //
   --dp-icon-color: #6b7280;
   --dp-danger-color: #ef4444;
   --dp-highlight-color: rgba(25, 118, 210, 0.1);
