@@ -16,10 +16,8 @@ const changeType = () => {
   <Input :type="type" :hasAppend="true">
     <template #append>
       <Icon
-        :src="$icon.render(type === 'password' ? 'eye-slash' : 'eye')"
-        width="20"
-        height="20"
-        class="!text-gray-500 cursor-pointer"
+        :name="type === 'password' ? 'eye-slash' : 'eye'"
+        class="!text-gray-500 cursor-pointer w-5 h-5"
         @click.prevent="changeType"
       ></Icon>
     </template>

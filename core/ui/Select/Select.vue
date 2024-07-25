@@ -221,8 +221,8 @@ const searchFocus = () => {
                       @click.stop="model.splice(indexModel, 1)"
                       width="16"
                       height="16"
-                      class="!text-gray-500 svg-line hover:!text-purple-600 cursor-pointer"
-                      :src="$icon.render('close')"
+                      class="!text-gray-500 svg-line hover:!text-purple-600 cursor-pointer w-4 h-4"
+                      name="close"
                     ></Icon>
                   </div>
                 </div>
@@ -248,10 +248,9 @@ const searchFocus = () => {
               @click.stop="model = undefined"
             >
               <Icon
-                width="20"
-                height="20"
-                class="!text-gray-500 svg-line hover:!text-purple-600"
+                class="!text-gray-500 svg-line hover:!text-purple-600 w-5 h-5"
                 :src="$icon.render('close')"
+                name="close"
               ></Icon>
             </div>
           </div>
@@ -262,10 +261,8 @@ const searchFocus = () => {
 
           <div class="w-6 absolute right-2 top-1/2 -translate-y-1/2">
             <Icon
-              :src="$icon.render('down')"
-              width="24"
-              height="24"
-              class="!text-gray-500 svg-line"
+              name="down"
+              class="!text-gray-500 svg-line w-6 h-6"
               :class="{ '-rotate-180': isShowDropdown }"
             ></Icon>
           </div>
@@ -285,10 +282,9 @@ const searchFocus = () => {
               <template #append v-if="keyword">
                 <Icon
                   @click.stop="keyword = ''"
-                  width="20"
-                  height="20"
-                  class="!text-gray-500 svg-line hover:!text-purple-600 cursor-pointer"
+                  class="!text-gray-500 svg-line hover:!text-purple-600 cursor-pointer w-5 h-5"
                   :src="$icon.render('close')"
+                  name="close"
                 ></Icon>
               </template>
             </Input>

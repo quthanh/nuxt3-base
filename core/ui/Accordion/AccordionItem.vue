@@ -32,8 +32,8 @@ const toggle = () => {
     >
       <slot name="title"></slot>
       <Icon
-        :src="$icon.render('down')"
-        class="svg-line transform transition-transform duration-300"
+        name="down"
+        class="svg-line transform transition-transform duration-300 w-5 h-5"
         :class="{
           'rotate-180': isOpen,
         }"

@@ -62,7 +62,7 @@ const setFile = () => {
       v-if="hasRemove && newFile"
       @click.stop="removeFile"
     >
-      <Icon width="24" height="24" :src="$icon.render('close')"></Icon>
+      <Icon name="close" class="w-6 h-6"></Icon>
     </div>
 
     <InputFile
@@ -86,7 +86,8 @@ const setFile = () => {
             '!text-red-500': error,
             '!text-blue-600': !error,
           }"
-          :src="$icon.render('plus')"
+          class="w-6 h-6"
+          name="plus"
         ></Icon>
       </div>
     </div>

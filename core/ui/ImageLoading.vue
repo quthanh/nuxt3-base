@@ -8,9 +8,9 @@ const SIZE: Record<string, string> = {
 };
 
 const SIZE_ICON: Record<string, string> = {
-  default: '48',
-  small: '24',
-  large: '48',
+  default: 'w-12 h-12',
+  small: 'w-6 h-6',
+  large: 'w-12 h-12',
 };
 
 const props = withDefaults(
@@ -76,9 +76,9 @@ onLoad();
 
     <div v-else-if="!isLoading && isError">
       <Icon
+        name="gallery"
         :src="$icon.render('gallery')"
-        :width="SIZE_ICON[size]"
-        :height="SIZE_ICON[size]"
+        :class="SIZE_ICON[size]"
         class="!text-gray-500"
       ></Icon>
     </div>

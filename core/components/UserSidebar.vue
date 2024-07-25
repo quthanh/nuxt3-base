@@ -62,10 +62,8 @@ const items = computed(() => {
                   },
                   item.iconClass,
                 ]"
-                class="text-gray-500 group-hover:text-purple-700"
-                :width="item?.size || 20"
-                :height="item?.size || 20"
-                :src="$icon.render(item.iconName)"
+                class="text-gray-500 group-hover:text-purple-700 w-5 h-5"
+                :name="item.iconName"
               ></Icon>
             </div>
             <div>
@@ -75,8 +73,8 @@ const items = computed(() => {
 
           <div v-if="item?.children">
             <Icon
-              :src="$icon.render('down')"
-              class="!text-icon-default svg-line"
+              name="down"
+              class="!text-icon-default svg-line w-5 h-5"
               :class="{ '-rotate-180': item?.children?.map((c: any) => c.name)?.includes(routeName) }"
             ></Icon>
           </div>

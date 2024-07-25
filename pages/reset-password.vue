@@ -86,12 +86,7 @@ useSeoMeta({
               <div
                 class="w-[60px] h-[60px] flex items-center justify-center bg-gray-50 border border-gray-300 rounded-lg"
               >
-                <Icon
-                  width="36"
-                  height="36"
-                  :src="$icon.render('key')"
-                  class="svg-line text-gray-700"
-                ></Icon>
+                <Icon name="key" class="svg-line text-gray-700 w-9 h-9"></Icon>
               </div>
             </div>
             <h2 class="text-gray-900 font-extrabold text-xl lg:text-3xl">Enter new password</h2>

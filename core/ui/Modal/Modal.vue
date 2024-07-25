@@ -68,10 +68,9 @@ onUnmounted(() => {
           ]"
         >
           <Icon
-            width="24"
-            height="24"
-            class="svg-line !text-white"
+            class="svg-line !text-white w-6 h-6"
             :src="$icon.render('close')"
+            name="close"
           ></Icon>
         </div>
         <div class="relative bg-white rounded-lg shadow">
@@ -84,10 +83,9 @@ onUnmounted(() => {
             <Button @click="closeModal" type="button" class="!text-gray-700 hover:!text-purple-600">
               <slot name="close-icon">
                 <Icon
-                  width="20"
-                  height="20"
-                  class="svg-line !text-gray-500"
+                  class="svg-line !text-gray-500 w-5 h-5"
                   :src="$icon.render('close')"
+                  name="close"
                 ></Icon>
               </slot>
             </Button>

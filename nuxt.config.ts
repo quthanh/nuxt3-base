@@ -4,14 +4,17 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   ssr: true,
   target: 'server',
+
   sourcemap: {
     server: false,
     client: false,
   },
+
   experimental: {
     crossOriginPrefetch: true,
     sharedPrerenderData: true,
   },
+
   nitro: {
     compressPublicAssets: {
       brotli: true,
@@ -23,6 +26,7 @@ export default defineNuxtConfig({
     minify: true,
     sourceMap: false,
   },
+
   build: {
     analyze: true,
     // Minify CSS
@@ -34,12 +38,14 @@ export default defineNuxtConfig({
       },
     },
   },
+
   routeRules: {
     // Generated at build time for SEO purpose
     '/': { prerender: false },
     '/products': { prerender: false },
     '/contact-us': { prerender: false },
   },
+
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/google-fonts',
@@ -48,11 +54,13 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     'nuxt-delay-hydration',
   ],
+
   delayHydration: {
     mode: 'init',
     // enables nuxt-delay-hydration in dev mode for testing
     debug: process.env.NODE_ENV === 'development',
   },
+
   swiper: {
     // Swiper options
     //----------------------
@@ -61,6 +69,7 @@ export default defineNuxtConfig({
     styleLang: 'css',
     modules: ['navigation', 'pagination', 'grid', 'effect-fade', 'thumbs', 'autoplay'], // all modules are imported by default
   },
+
   googleFonts: {
     preload: true,
     useStylesheet: true,
@@ -69,6 +78,7 @@ export default defineNuxtConfig({
       Inter: [400, 500, 600, 700, 800, 900],
     },
   },
+
   app: {
     pageTransition: true,
     layoutTransition: true,
@@ -101,24 +111,31 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   components: {
     dirs: ['./core/ui', './core/components'],
   },
+
   css: ['~/assets/main.scss'],
   plugins: ['~/plugins/globalConfig.ts'],
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   tailwindcss: {
     exposeConfig: false,
     viewer: false,
   },
+
   runtimeConfig: {
     public: {
       apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE,
     },
   },
+
+  compatibilityDate: '2024-07-25',
 });

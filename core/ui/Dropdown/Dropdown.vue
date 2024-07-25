@@ -143,7 +143,7 @@ watch(
           :class="{ 'rotate-180': show }"
           @click="iconTriggerClick"
         >
-          <Icon :src="$icon.render('down')" class="svg-line" :class="iconClass"></Icon>
+          <Icon name="down" class="svg-line" :class="iconClass"></Icon>
         </div>
       </div>
     </div>

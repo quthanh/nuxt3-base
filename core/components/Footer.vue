@@ -9,7 +9,7 @@
           href="mailto:support@com"
           class="flex items-center justify-center gap-1 text-gray-400 hover:text-gray-300"
         >
-          <Icon class="svg-line" width="20" height="20" :src="$icon.render('email')"></Icon>
+          <Icon class="svg-line w-5 h-5" name="email"></Icon>
           support@com
         </a>
       </div>

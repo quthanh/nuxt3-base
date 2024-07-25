@@ -120,7 +120,7 @@ watch(
                   !isDecreaseDisabled,
               }"
             >
-              <Icon :src="$icon.render('down')" class="rotate-90 svg-line"></Icon>
+              <Icon name="down" class="rotate-90 svg-line"></Icon>
             </button>
           </li>
 
@@ -149,7 +149,7 @@ watch(
                   !isIncreaseDisabled,
               }"
             >
-              <Icon :src="$icon.render('down')" class="-rotate-90 svg-line"></Icon>
+              <Icon name="down" class="-rotate-90 svg-line"></Icon>
             </button>
           </li>
         </ul>

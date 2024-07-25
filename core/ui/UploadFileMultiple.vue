@@ -79,13 +79,12 @@ const setFiles = () => {
         class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-1 w-full flex items-center justify-center px-2"
       >
         <Icon
-          width="24"
-          height="24"
           :class="{
             '!text-red-500': error,
             '!text-blue-600': !error,
           }"
-          :src="$icon.render('plus')"
+          class="w-6 h-6"
+          name="plus"
         ></Icon>
       </div>
     </div>
@@ -100,7 +99,7 @@ const setFiles = () => {
         class="w-6 h-6 cursor-pointer absolute top-2 right-2 z-[12] text-gray-500 hover:text-red-500 bg-white border border-gray-300 rounded-md flex items-center justify-center shadow-sm"
         @click="removeFile(index)"
       >
-        <Icon width="20" height="20" :src="$icon.render('close')"></Icon>
+        <Icon name="close"></Icon>
       </div>
 
       <ImageLoading :class="itemClass" class="p-1 max-h-full" alt="" :src="item.url" />

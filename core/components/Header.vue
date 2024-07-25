@@ -31,10 +31,8 @@ const menuWhenLogin = ref([
       <NuxtLink to="/" class="flex items-center flex-col">
         <div class="w-6 h-6 flex items-center justify-center">
           <Icon
-            width="24"
-            height="24"
-            :src="$icon.render('house')"
-            class="text-gray-600 svg-line"
+            name="house"
+            class="text-gray-600 svg-line w-6 h-6"
             :class="{
               '!text-purple-700': route.name === 'index',
             }"
@@ -59,7 +57,7 @@ const menuWhenLogin = ref([
         "
       >
         <div class="w-6 h-6 flex items-center justify-center">
-          <Icon width="24" height="24" :src="$icon.render('menu')" class="text-gray-700"></Icon>
+          <Icon name="menu" class="w-6 h-6 text-gray-700"></Icon>
         </div>
 
         <div class="text-xs text-gray-700 font-medium">Menu</div>
@@ -79,12 +77,7 @@ const menuWhenLogin = ref([
         <img alt="Logo" :src="logo" loading="lazy" class="max-h-[46px]" />
       </NuxtLink>
       <div class="cursor-pointer" @click="closeModal">
-        <Icon
-          width="24"
-          height="24"
-          class="svg-line !text-gray-500"
-          :src="$icon.render('close')"
-        ></Icon>
+        <Icon class="svg-line !text-gray-500 w-6 h-6" name="close"></Icon>
       </div>
     </div>
     <div class="h-[calc(100%-58px)] relative">

@@ -22,13 +22,7 @@ const buildClasses = computed(() => {
     class="break-word flex p-5 rounded-lg text-gray-900 alert"
   >
     <div class="flex-[0_0_20px] mr-4">
-      <Icon
-        width="24"
-        height="24"
-        :src="$icon.render(ICON_NAME[props.variant])"
-        class=""
-        :class="ICON[props.variant]"
-      ></Icon>
+      <Icon :name="ICON_NAME[props.variant]" class="w-6 h-6" :class="ICON[props.variant]"></Icon>
     </div>
     <slot></slot>
   </div>
