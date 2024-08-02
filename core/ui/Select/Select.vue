@@ -44,6 +44,10 @@ const emit = defineEmits(['onChange']);
 
 const model = useVModel(props, 'modelValue');
 
+if (model.value && !Array.isArray(model.value) && props.isMultiple) {
+  model.value = [model.value];
+}
+
 const isShowDropdown = ref<boolean>(false);
 const keyword = ref<string>();
 const select = ref();

@@ -1,5 +1,5 @@
 <template>
-  <div :class="class" v-html="icon" />
+  <div :class="class" v-html="icon"></div>
 </template>
 <script setup lang="ts">
 const props = withDefaults(
@@ -42,7 +42,9 @@ const getIcon = async () => {
   }
 };
 
-onMounted(() => {
+getIcon();
+
+watchEffect(async () => {
   getIcon();
 });
 </script>
