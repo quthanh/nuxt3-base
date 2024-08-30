@@ -1,5 +1,5 @@
 <template>
-  <div :class="class" v-html="icon"></div>
+  <div v-html="icon"></div>
 </template>
 <script setup lang="ts">
 const props = withDefaults(
@@ -14,7 +14,7 @@ const icon = ref();
 
 const getIcon = async () => {
   try {
-    if (!props.name) return;
+    if (!props.name || !process.client) return;
 
     const iconsImport = import.meta.glob(`assets/svg-icon/**/**.svg`, {
       query: '?raw',
