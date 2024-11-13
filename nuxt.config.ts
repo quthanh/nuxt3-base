@@ -27,6 +27,16 @@ export default defineNuxtConfig({
     sourceMap: false,
   },
 
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler', // or "modern"
+        },
+      },
+    },
+  },
+
   build: {
     analyze: true,
     // Minify CSS

@@ -5,7 +5,6 @@
       :src="loaded ? imgSrc : undefined"
       ref="imageRef"
       @load="onImageLoad"
-      class=""
       :class="imgClass"
       loading="lazy"
       :alt="alt || $globalConfig.title"

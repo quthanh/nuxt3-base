@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-
-const emit = defineEmits(['files']);
+import { useVModel } from '@vueuse/core';
 
 const props = withDefaults(
   defineProps<{
@@ -9,18 +7,18 @@ const props = withDefaults(
     acceptFile?: string;
     parentClass?: string;
     itemClass?: string;
-    files?: any[];
+    modelValue: any[];
     hasRemove?: true;
   }>(),
   {
-    acceptFile: 'image/png, image/gif, image/jpeg',
+    acceptFile: 'image/png, image/gif, image/jpeg, image/webp',
     itemClass: 'h-[150px]',
     parentClass: 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6',
     hasRemove: true,
   }
 );
 
-const newFiles = ref<any[]>(props?.files || []);
+const newFiles = useVModel(props, 'modelValue');
 
 const changeFile = ($event: Event) => {
   const files = ($event.target as HTMLInputElement)?.files;
@@ -39,19 +37,11 @@ const changeFile = ($event: Event) => {
     });
   }
 
-  setFiles();
-
   ($event.target as HTMLInputElement).value = '';
 };
 
 const removeFile = (index: number) => {
   newFiles.value.splice(index, 1);
-
-  setFiles();
-};
-
-const setFiles = () => {
-  emit('files', newFiles.value);
 };
 </script>
 <template>

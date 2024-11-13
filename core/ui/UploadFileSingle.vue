@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
+import { useVModel } from '@vueuse/core';
+
 const emit = defineEmits(['file']);
 
 const props = withDefaults(
@@ -8,16 +11,17 @@ const props = withDefaults(
     itemClass?: string;
     previewFile?: string;
     hasRemove?: true;
+    modelValue?: any;
   }>(),
   {
-    acceptFile: 'image/png, image/gif, image/jpeg',
+    acceptFile: 'image/png, image/gif, image/jpeg, image/webp',
     itemClass: 'h-[150px]',
     hasRemove: true,
   }
 );
 
 const previewFile = ref(props.previewFile);
-const newFile = ref();
+const newFile = useVModel(props, 'modelValue');
 
 const changeFile = ($event: Event) => {
   const file = ($event.target as HTMLInputElement)?.files?.[0];
@@ -28,8 +32,6 @@ const changeFile = ($event: Event) => {
 
   newFile.value = file;
 
-  setFile();
-
   const URL = window.webkitURL || window.URL;
   previewFile.value = URL.createObjectURL(file);
 
@@ -39,12 +41,6 @@ const changeFile = ($event: Event) => {
 const removeFile = () => {
   previewFile.value = '';
   newFile.value = '';
-
-  setFile();
-};
-
-const setFile = () => {
-  emit('file', newFile.value);
 };
 </script>
 <template>

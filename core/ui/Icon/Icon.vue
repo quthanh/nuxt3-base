@@ -44,7 +44,11 @@ const getIcon = async () => {
 
 getIcon();
 
-watchEffect(async () => {
-  getIcon();
-});
+watch(
+  () => props,
+  () => {
+    getIcon();
+  },
+  { deep: true }
+);
 </script>
