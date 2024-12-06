@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 const nuxtApp = useNuxtApp();
+const route = useRoute();
+const { checkVersion } = useVersion();
 
 nuxtApp.hook('page:finish', () => {
   scrollToTop();
@@ -10,6 +12,21 @@ nuxtApp.hook('page:finish', () => {
 //   console.log(target, 'target');
 //   console.log(info, 'info');
 // });
+
+watch(
+  () => route.path,
+  () => {
+    checkVersion();
+  }
+);
+
+onMounted(() => {
+  document.addEventListener('visibilitychange', checkVersion);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('visibilitychange', checkVersion);
+});
 </script>
 
 <template>
